@@ -12,6 +12,8 @@ class Api
 
         data.each do |data, value| 
             # puts data
+
+            Quotes.new(data, value)
             if value == nil  
                 puts "unknown"
             else 
