@@ -10,15 +10,23 @@ class Api
         data = JSON.parse(res.body)
         
 
-            data["components"]["schemas"]["priceData"].each do |key, value| 
-           
+            data["components"]["schemas"]["priceData"]["properties"].each do |key, value|
+
+                # puts data_type
+                # puts value 
+
                 Quotes.new(key, value)
+
+            end 
+            
+           
+               
                 
                 #     self.each do |quotes_variables, num|
                 #     puts quotes_variables
                 #     puts num
                 #     end 
            
-            end 
+           
     end  
 end

@@ -14,8 +14,6 @@ class Quotes
     end 
 
     def print_key 
-        puts @key
+        puts "I love you"
     end 
-
-    
 end
