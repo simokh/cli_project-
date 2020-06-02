@@ -3,6 +3,7 @@ class Api
     # QUOTES_URL = "https://cloud.iexapis.com/beta?token="
     QUOTES_URL = "https://cloud.iexapis.com/stable/tops?token="
     KEY = ENV['API_KEY']
+    
 
     def self.quotes_get
         #requesting a response from the URL attached and setting = to a variable 
@@ -24,7 +25,6 @@ class Api
                 lastSalePrice = data_type["lastSalePrice"]
                 volume = data_type["volume"]
                 Quotes.new(symbol, sector, ask_price, bid_price, lastSalePrice, volume)
-
             end 
     end  
 end

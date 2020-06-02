@@ -1,6 +1,7 @@
 class Quotes 
 
-    attr_reader :symbol,  :sector, :ask_price, :bid_price, :lastSalePrice, :volume
+    attr_reader :symbol, :sector, :ask_price, :bid_price, :lastSalePrice, :volume
+
     @@all = []
 
 
