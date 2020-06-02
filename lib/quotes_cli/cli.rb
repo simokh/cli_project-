@@ -1,6 +1,16 @@
 class Cli
 
 
+    def run 
+        header 
+        user_name
+        thank_you_message
+        sleep 1 
+        make_selection
+        Api.quotes_get
+        # continue
+    end 
+
     def header 
     puts "Welcome to Easy Quotes"
 
@@ -41,15 +51,6 @@ class Cli
     end
 
 
-    def exit
-        puts "Goodbye"
-        puts "-   -"
-        puts "  |  "
-        puts "-    -"
-        puts " ----"
-    end 
-
-
     def continue 
         puts "Do you want to continue: y/n?"
         user_input = gets.chomp
@@ -59,6 +60,15 @@ class Cli
             self.exit
         end 
       end
+
+
+    def exit
+        puts "Goodbye"
+        puts "-   -"
+        puts "  |  "
+        puts "-    -"
+        puts " ----"
+    end 
 
 end
 

@@ -1,11 +1,17 @@
 class Quotes 
 
-    attr_reader :key, :value 
+    attr_reader :symbol,  :sector, :ask_price, :bid_price, :lastSalePrice, :volume
     @@all = []
 
-    def initialize(key, value)
-        @key = key
-        @value = value 
+
+    def initialize(symbol, sector, ask_price, bid_price, lastSalePrice, volume)
+
+        @symbol = symbol 
+        @sector = sector
+        @ask_price = ask_price
+        @bid_price = bid_price
+        @lastSalePrice =  lastSalePrice
+        @volume = volume
         @@all << self 
     end 
 
@@ -13,7 +19,4 @@ class Quotes
         @@all 
     end 
 
-    def print_key 
-        puts "I love you"
-    end 
 end
