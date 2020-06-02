@@ -1,16 +1,20 @@
 class Quotes 
 
-    attr_reader :data, :value 
+    attr_reader :key, :value 
     @@all = []
 
-    def initialize(data, value)
-        @data = data 
+    def initialize(key, value)
+        @key = key
         @value = value 
         @@all << self 
     end 
 
     def self.all 
         @@all 
+    end 
+
+    def print_key 
+        puts @key
     end 
 
     

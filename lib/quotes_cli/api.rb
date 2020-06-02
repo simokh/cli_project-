@@ -1,6 +1,6 @@
 class Api 
 
-    QUOTES_URL = "https://cloud.iexapis.com/stable/stock/aapl/quote?token="
+    QUOTES_URL = "https://cloud.iexapis.com/beta?token="
     KEY = ENV['API_KEY']
 
     def self.quotes_get
@@ -10,15 +10,15 @@ class Api
         data = JSON.parse(res.body)
         
 
-        data.each do |data, value| 
-            # puts data
-
-            Quotes.new(data, value)
-            if value == nil  
-                puts "unknown"
-            else 
-                puts value  
-            end
-        end 
+            data["components"]["schemas"]["priceData"].each do |key, value| 
+           
+                Quotes.new(key, value)
+                
+                #     self.each do |quotes_variables, num|
+                #     puts quotes_variables
+                #     puts num
+                #     end 
+           
+            end 
     end  
 end
