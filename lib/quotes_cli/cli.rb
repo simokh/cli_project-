@@ -2,22 +2,21 @@ class Cli
 
 
     def start 
-        # header 
-        # user_name
-        # thank_you_message
-        # sleep 1 
+        header 
+        user_name
+        thank_you_message
+        sleep 1 
         Api.quotes_get
-        # data_filter
-        selection_data(user_input) 
-        # test 
+        ticker_info(ticker_name)
+        # puts "Take a look at our list of tickers:"
+        # sleep 1 
+        # original_screen
     end 
 
     def original_screen 
-        # print_all
-        # user_entry
-        # valid_entry?
-        user_input
-        data_filter(user_input) 
+        # print_all_tickers
+        # ticker_number
+        # ticker_list_selection
     end 
 
     def header 
@@ -53,16 +52,14 @@ class Cli
     #     # financials
     # end 
 
-    def user_input
-        gets.chomp
-    end 
 
+    def ticker_number 
+        puts "Please choose a number for the ticker you wish to display:"
+    end 
         
     def print_all_tickers
         data_filter
     end 
-
-  
 
     def data_filter 
         Quotes.all.each_with_index do |sym, index|
@@ -70,44 +67,68 @@ class Cli
         end 
     end 
 
+    def ticker_list_selection
+        index = gets.chomp.to_i - 1 
+        last_ticker = Quotes.all.size - 1 
 
-    def selection_data(user_input)
-        Quotes.all.find do |sym|
-        if sym.symbol == user_input.upcase
-            sym.symbol
-            end 
+        until index.between?(0,last_ticker)
+            puts "invalid, please choose again!"
+            index = gets.chomp.to_i - 1 
+        end 
+        ticker = Quotes.all[index]
+             puts ticker.symbol
+    end 
+
+     
+
+    # def select_a_ticker_by_number 
+    #     index = gets.chomp.to_i - 1 
+    # end 
+
+
+    def ticker_name
+        input = gets.strip
+        ticker = Quotes.all.find do |sym|
+        sym.symbol == input.upcase
         end 
     end  
 
-    def test 
-        user_input
+
+    def ticker_info(ticker)
+        puts ticker.volume 
     end 
 
 
 
 
-    # def stock_quotes 
-    #     puts "1. Stock Quotes"
-    # end 
+    def selection_options 
+        puts "1. Make a selection from a list of tickers:"
+        puts "2. Please enter a ticker:"
+        input = gets.chomp.to_i
+        unless input.between?(0,1)
+            puts "invalid"
+        end 
+        if input == 1 
+            data_filter 
+        else 
+            ticker_name
+        end 
+    end 
 
-    # def financials 
-    #     puts "2. Financials"
-    # end 
+
 
     
 
     # def stock_quotes_prompt
-    #     if make_selection == 1  
-    #     puts "Please enter a ticker:" 
-    #     else 
-    #         puts "I am happy for you"  
-    #     end
-    #     user_input = gets.chomp.to_s
-    #     if user_input = @symbol 
-    #         "i like it"
-    #     else 
+    #     if selection_options == 1  
+    #         data_filter    
+    #     elsif  
+    #         selection_options == 2
+    #         ticker_name
+    #     else
     #         "invalid entry. Please try again!"
     #     end 
+
     # end 
 
 
