@@ -1,13 +1,15 @@
 class Cli
 
 
-    def run 
-        header 
-        user_name
-        thank_you_message
-        sleep 1 
+    def start 
+        # header 
+        # user_name
+        # thank_you_message
+        # sleep 1 
         Api.quotes_get
-        original_screen 
+        # data_filter
+        selection_data(user_input) 
+        # test 
     end 
 
     def original_screen 
@@ -55,34 +57,32 @@ class Cli
         gets.chomp
     end 
 
-    # def valid_entry?  
-    #         if user_entry < 1 || Quotes.all.size 
-    #             puts "invalid entry. Please try again!" 
-    #             # original_screen
-    #         else 
-    #             "i dont know yet"  
-    #         end 
-    # end
-
         
+    def print_all_tickers
+        data_filter
+    end 
 
-    # def print_all
-    #     counter = 1
-    #     Quotes.all.each do |data| 
-    #         puts "#{counter}."  + data.symbol 
-    #         counter += 1
-    #         end 
-    # end 
+  
 
     def data_filter 
-      Quotes.all.find do |sym|
-        if sym.symbol == user_input.upcase
-            user_input.symbol
-        else 
-            "i dont like it"
+        Quotes.all.each_with_index do |sym, index|
+        puts "#{index + 1 } #{sym.symbol}"
         end 
-        end  
     end 
+
+
+    def selection_data(user_input)
+        Quotes.all.find do |sym|
+        if sym.symbol == user_input.upcase
+            sym.symbol
+            end 
+        end 
+    end  
+
+    def test 
+        user_input
+    end 
+
 
 
 
@@ -110,6 +110,22 @@ class Cli
     #     end 
     # end 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     # def continue 
     #     puts "Do you want to continue: y/n?"
     #     user_input = gets.chomp
@@ -120,13 +136,13 @@ class Cli
     #     end 
     # end
 
-    # def exit
-    #     puts "Goodbye"
-    #     puts "-   -"
-    #     puts "  |  "
-    #     puts "-    -"
-    #     puts " ----"
-    # end 
+    def exit
+        puts "Goodbye"
+        puts "-   -"
+        puts "  |  "
+        puts "-    -"
+        puts " ----"
+    end 
 
 end
 

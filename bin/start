@@ -2,5 +2,5 @@
 
 require_relative '../lib/quotes_cli.rb'
 
-Cli.new.run
+Cli.new.start
 
