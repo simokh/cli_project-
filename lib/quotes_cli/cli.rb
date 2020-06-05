@@ -19,8 +19,6 @@ class Cli
 
     def header 
     puts "Welcome to Easy Quotes"
-
-    
     puts "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/" 
     sleep 0.5
     puts "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/" 
@@ -76,12 +74,6 @@ class Cli
         puts "Last Sale Price:  " + ticker.lastSalePrice.to_s
     end 
 
-     
-
-    # def select_a_ticker_by_number 
-    #     index = gets.chomp.to_i - 1 
-    # end 
-
 
     def ticker_name
         input = gets.strip
@@ -134,6 +126,7 @@ class Cli
             end 
             
         end
+
     
     def exit
         puts "We are sad to see you go; Goodbye!!"
