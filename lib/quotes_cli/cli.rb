@@ -8,6 +8,7 @@ class Cli
         sleep 1 
         Api.quotes_get
         original_screen
+        ask_user_again
     end 
 
     def original_screen
@@ -67,12 +68,12 @@ class Cli
             index = gets.chomp.to_i - 1 
         end 
         ticker = Quotes.all[index]
-            puts ticker.symbol
-            puts ticker.sector 
-            puts ticker.ask_price 
-            puts ticker.bid_price 
-            puts ticker.volume 
-            puts ticker.lastSalePrice
+        puts "Company Ticker:  " + ticker.symbol
+        puts "Sector:  " + ticker.sector 
+        puts "Ask Price:  " + ticker.ask_price.to_s 
+        puts "Bid Price:  " + ticker.bid_price.to_s 
+        puts "Volume:  " + ticker.volume.to_s 
+        puts "Last Sale Price:  " + ticker.lastSalePrice.to_s
     end 
 
      
@@ -91,11 +92,12 @@ class Cli
 
 
     def ticker_info(ticker)
-        puts ticker.sector 
-        puts ticker.ask_price 
-        puts ticker.bid_price 
-        puts ticker.volume 
-        puts ticker.lastSalePrice
+        puts "Company Ticker:  " + ticker.symbol
+        puts "Sector:  " + ticker.sector 
+        puts "Ask Price:  " + ticker.ask_price.to_s 
+        puts "Bid Price:  " + ticker.bid_price.to_s 
+        puts "Volume:  " + ticker.volume.to_s 
+        puts "Last Sale Price:  " + ticker.lastSalePrice.to_s
     end 
 
     def selection_options 
@@ -107,68 +109,34 @@ class Cli
     end 
 
     def making_selection_1
-        input = gets.chomp.to_i 
+        input = gets.chomp.to_i
         if input == 1
             data_filter
             ticker_list_selection
         elsif input == 2 
             #this is working 
-            puts "Please the stock ticker you wish to display:"
+            ticker_number
             ticker_info(ticker_name)
         else 
-            puts "invalid" 
-        end  
-
-        # def valid_entry?(input)
-        #     input.between?(1,2)
-        # end 
-    end 
+            puts "Invalid entry try again" 
+            input = gets.chomp.to_i
+        end
+    end  
+        
+        def ask_user_again
+            puts " Do you want to make another selection: y/n?"
+            input = gets.chomp.downcase
+            if   input == "yes" || input == "y" 
+              original_screen
+              ask_user_again
+            else
+                exit 
+            end 
+            
+        end
     
-
-
-
-    
-
-    # def stock_quotes_prompt
-    #     if selection_options == 1  
-    #         data_filter    
-    #     elsif  
-    #         selection_options == 2
-    #         ticker_name
-    #     else
-    #         "invalid entry. Please try again!"
-    #     end 
-
-    # end 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # def continue 
-    #     puts "Do you want to continue: y/n?"
-    #     user_input = gets.chomp
-    #     if  user_input == "y"    
-    #         self.make_selection
-    #     else  
-    #         self.exit
-    #     end 
-    # end
-
     def exit
-        puts "Goodbye"
+        puts "We are sad to see you go; Goodbye!!"
         puts "-   -"
         puts "  |  "
         puts "-    -"

@@ -1,11 +1,11 @@
 class Users 
 
-    attr_reader :name 
+    attr_reader :user_name 
 
     @@all = []
 
-    def initialize(name)
-        @name = name 
+    def initialize(Cli.user_name)
+        @user_name = user_name 
         @@all << self 
     end 
 
