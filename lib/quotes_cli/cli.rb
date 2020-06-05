@@ -139,8 +139,7 @@ class Cli
         puts "We are sad to see you go; Goodbye!!"
         puts "-   -"
         puts "  |  "
-        puts "-    -"
-        puts " ----"
+        puts "-----"
     end 
 
 end
