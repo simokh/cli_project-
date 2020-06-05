@@ -46,6 +46,10 @@ class Cli
     def ticker_number 
         puts "Please choose a number for the ticker you wish to display:"
     end 
+
+    def ticker_symbol 
+        puts "Please enter the ticker symbol to receive your quote:"
+    end 
         
     def print_all_tickers
         data_filter
@@ -94,9 +98,9 @@ class Cli
 
     def selection_options 
         puts "Please make your selection for the options below:"
-        sleep 0.5 
+        sleep 1 
         puts "1. Make a selection from a list of tickers:"
-        sleep 0.5
+        sleep 1
         puts "2. Please enter a ticker:" 
     end 
 
@@ -104,10 +108,11 @@ class Cli
         input = gets.chomp.to_i
         if input == 1
             data_filter
+            ticker_number
             ticker_list_selection
         elsif input == 2 
             #this is working 
-            ticker_number
+            ticker_symbol 
             ticker_info(ticker_name)
         else 
             puts "Invalid entry try again" 
