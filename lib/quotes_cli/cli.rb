@@ -7,32 +7,29 @@ class Cli
         thank_you_message
         sleep 1 
         Api.quotes_get
-        ticker_info(ticker_name)
-        # puts "Take a look at our list of tickers:"
-        # sleep 1 
-        # original_screen
+        original_screen
     end 
 
-    def original_screen 
-        # print_all_tickers
-        # ticker_number
-        # ticker_list_selection
+    def original_screen
+        selection_options
+        sleep 0.5 
+        making_selection_1
     end 
 
     def header 
     puts "Welcome to Easy Quotes"
 
     
-    # puts "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/" 
-    # sleep 0.5
-    # puts "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/" 
-    # sleep 0.5
-    # puts "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/" 
-    # sleep 0.5
-    # puts "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/" 
-    # sleep 0.5
-    # puts "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/" 
-    # sleep 0.5
+    puts "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/" 
+    sleep 0.5
+    puts "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/" 
+    sleep 0.5
+    puts "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/" 
+    sleep 0.5
+    puts "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/" 
+    sleep 0.5
+    puts "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/" 
+    sleep 0.5
     end 
 
     def user_name 
@@ -44,13 +41,7 @@ class Cli
     def thank_you_message 
         sleep 0.5
         puts "Thank you."
-    end 
-
-    # def make_selection
-    #     puts "Please make a selection from the list below:"
-    #     # stock_quotes
-    #     # financials
-    # end 
+    end  
 
 
     def ticker_number 
@@ -76,7 +67,12 @@ class Cli
             index = gets.chomp.to_i - 1 
         end 
         ticker = Quotes.all[index]
-             puts ticker.symbol
+            puts ticker.symbol
+            puts ticker.sector 
+            puts ticker.ask_price 
+            puts ticker.bid_price 
+            puts ticker.volume 
+            puts ticker.lastSalePrice
     end 
 
      
@@ -95,25 +91,39 @@ class Cli
 
 
     def ticker_info(ticker)
+        puts ticker.sector 
+        puts ticker.ask_price 
+        puts ticker.bid_price 
         puts ticker.volume 
+        puts ticker.lastSalePrice
     end 
-
-
-
 
     def selection_options 
+        puts "Please make your selection for the options below:"
+        sleep 0.5 
         puts "1. Make a selection from a list of tickers:"
-        puts "2. Please enter a ticker:"
-        input = gets.chomp.to_i
-        unless input.between?(0,1)
-            puts "invalid"
-        end 
-        if input == 1 
-            data_filter 
-        else 
-            ticker_name
-        end 
+        sleep 0.5
+        puts "2. Please enter a ticker:" 
     end 
+
+    def making_selection_1
+        input = gets.chomp.to_i 
+        if input == 1
+            data_filter
+            ticker_list_selection
+        elsif input == 2 
+            #this is working 
+            puts "Please the stock ticker you wish to display:"
+            ticker_info(ticker_name)
+        else 
+            puts "invalid" 
+        end  
+
+        # def valid_entry?(input)
+        #     input.between?(1,2)
+        # end 
+    end 
+    
 
 
 
