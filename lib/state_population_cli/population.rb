@@ -24,7 +24,7 @@
 
 
 #########################################################################################################
-#the code above was working all week until late last night;  the base URL was not responding 
+#the code above was working all week until late last night 06/06/2020;  the base URL was not responding 
 #therefore I am starting from scratch the code below
 
 #########################################################################################################
