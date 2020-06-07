@@ -193,9 +193,16 @@ class Cli
         thank_you_message
         sleep 1 
         Api.states_population_get
+        give_user_choice
+        original_screen
         
-        # original_screen
-        # ask_user_again
+    end 
+
+    def original_screen
+        states_selection
+        states_list_selection
+        sleep 0.5
+        ask_user_again
     end 
 
     def header 
@@ -219,43 +226,100 @@ class Cli
     def user_name 
         sleep 1
         puts "Please Enter your name:"
-        user_name = gets.chomp(" ")
+        input = gets.chomp(" ")
     end 
 
     def thank_you_message 
         sleep 0.5
-        puts "Thank you."
+        puts "Thank you!"
     end 
 
-    def ask_user_again
-        puts " Would you like to see a list of the 50 states: y/n?"
-            if   input == "yes" || input == "y" 
-                      print_list 
-            else
-                exit 
-            end 
-    end
+    def states_selection
+        puts "Please make your selection by choosing a number of the state you wish to see its population:"
+    end 
 
+    ######################################
 
-    def fifty_states
-        Quotes.all.each_with_index do |data, index|
-            puts "#{index - 1}. #{data.state}"
+        #print method 
+
+     ######################################
+
+     def fifty_states
+        Population.all.each_with_index do |data, index|
+            list = puts "#{index + 1}. #{data.state}"
+            list
         end 
     end 
 
 
+    def print_list
+        fifty_states
+    end 
+
+     ######################################
+
+        #Program methods 
+
+     ######################################
+
+    def give_user_choice
+        puts " Would you like to see a list of the all states and common wealth: y/n?"
+            input = gets.chomp.downcase
+           if  input == "yes" || input == "y"
+            print_list
+           else 
+            exit1
+            exit
+           end   
+    end 
+
+    def states_list_selection
+        index = gets.chomp.to_i - 1 
+        last_state = Population.all.size - 1 
+        
+        until index.between?(0,last_state)
+            puts "invalid, please choose again!"
+            index = gets.chomp.to_i - 1 
+        end 
+
+        state = Population.all[index]
+        
+        puts "State: "  + state.state
+        puts "Year: "  + state.year
+        puts "Population: " + "" + state.population.to_s + " " + "people"
+    end 
+
+    def ask_user_again
+        puts " Do you want to make another selection: y/n?"
+        input = gets.chomp.downcase
+            if   input == "yes" || input == "y" 
+                print_list
+                states_selection
+                states_list_selection 
+                ask_user_again
+            else
+                exit_prgram
+                exit 
+            end          
+    end
 
 
+     ######################################
+        #Exit the program.
+     ######################################
 
 
-
-
-    def exit
+    def exit_prgram
         puts "We are sad to see you go; Goodbye!!"
         puts "-   -"
         puts "  |  "
         puts "-----"
     end 
+
+    def exit1
+        puts "oh noooo, please come back soon!"
+    end 
+
 
 
 end 
