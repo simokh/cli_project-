@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby 
 
-require_relative '../lib/quotes_cli.rb'
+require_relative '../lib/state_popualtion_cli.rb'
 
 pry  
