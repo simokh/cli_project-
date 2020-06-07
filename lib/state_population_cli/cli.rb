@@ -263,7 +263,7 @@ class Cli
      ######################################
 
     def give_user_choice
-        puts " Would you like to see a list of the all states: y/n?"
+        puts " Would you like to see a list of all states: y/n?"
             input = gets.chomp.downcase
            if  input == "yes" || input == "y"
             print_list
