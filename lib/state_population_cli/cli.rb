@@ -235,7 +235,7 @@ class Cli
     end 
 
     def states_selection
-        puts "Please make your selection by choosing a number of the state you wish to see its population:"
+        puts "Please make your selection by choosing the number of the state you wish to see its population:"
     end 
 
     ######################################
