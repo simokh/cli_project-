@@ -24,3 +24,8 @@ After allocating the attributes that I wanted to work with, I created my Populat
 The last step was to code into the CLI class by working with those saved objects into the @@all array to make it user friendly. Once the program is executed, the user then is prompted to choose from a list of all states. Based of their selection, the attributes of that particular state will be displayed on the screen for them. They will also be asked whether they want to continue or exit the program. 
 
 There you have it, the first gem was challenging; nevertheless I learned a lot. 
+
+
+please run bundler to downlaod all the gems, no special install needed. 
+API_KEY = 'https://datausa.io/api/data?drilldowns=State&measures=Population&year=latest'
+https://opensource.org/licenses/MIT
