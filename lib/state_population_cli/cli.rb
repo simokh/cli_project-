@@ -206,7 +206,7 @@ class Cli
     end 
 
     def header 
-            puts "Welcome to State Population"
+            puts "Welcome to State Population 2018"
             puts "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/" 
             sleep 0.5
             puts "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/"  "|" "/" "|" "/" 
